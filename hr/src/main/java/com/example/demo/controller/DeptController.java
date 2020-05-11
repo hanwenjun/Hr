@@ -31,4 +31,19 @@ public class DeptController {
             return "fail";
         }
     }
+    
+    @GetMapping("/findById/{deptno}")
+    public Dept findById(@PathVariable("deptno") Integer deptno) {
+    	return deptRepository.findById(deptno).get();
+    }
+    
+    @PutMapping("/update")
+    public String update(@RequestBody Dept dept) {
+    	Dept result = deptRepository.save(dept);
+    		if(result !=null){
+    			return "success";
+    		}else{
+    			return "fail";
+    		}
+    }
 }
